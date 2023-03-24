@@ -16,3 +16,4 @@ myAside.showAside();
 //Metodos de myArticles
 myArticles.showTitle();
 myArticles.showArticules();
+myArticles.showBotones();
