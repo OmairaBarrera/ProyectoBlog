@@ -6,31 +6,31 @@ export default{
     womes: [
         {
             name: 'Jane Goodall',
-            href: '#'
+            href: 'https://es.wikipedia.org/wiki/Jane_Goodall'
         },
         {
             name: 'Rosalind Franklin',
-            href: '#'
+            href: 'https://es.wikipedia.org/wiki/Rosalind_Franklin'
         },
         {
             name: 'Vera Rubin',
-            href: '#'
+            href: 'https://es.wikipedia.org/wiki/Vera_Rubin'
         },
         {
             name: 'Mary Anning',
-            href: '#'
+            href: 'https://es.wikipedia.org/wiki/Mary_Anning'
         },
         {
             name: 'Marie Tharp',
-            href: '#'
+            href: 'https://es.wikipedia.org/wiki/Marie_Tharp'
         },
         {
             name: 'Ada Lovelace',
-            href: '#'
+            href: 'https://es.wikipedia.org/wiki/Ada_Lovelace'
         },
         {
             name: 'Helia Bravo',
-            href: '#'
+            href: 'https://es.wikipedia.org/wiki/Helia_Bravo_Hollis'
         },
     ],
 
@@ -43,7 +43,7 @@ export default{
     listWomes(){
         let plantilla = "";
         this.womes.forEach((val,id) => {
-            plantilla += `<a class="p-2 link-secondary" href="#">${val.name}</a>`
+            plantilla += `<a class="p-2 link-secondary" href="${val.href}" target="_blank">${val.name}</a>`
         });
         document.querySelector("#womes").insertAdjacentHTML("beforeend", plantilla);
     }
