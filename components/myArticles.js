@@ -2,6 +2,18 @@ export default{
     title: "CIENTIFICAS QUE HICIERON HISTORIA",
     articles: [
         {
+            title:"Antigüedad",
+            date: {
+                year: "11 de febrero de 2019",
+                href: "https://hipertextual.com/2019/02/mujer-historia-ciencia",
+                by: "Azucena Martín"
+            },
+            paragraph: ["La primer mujer científica de la que hay registros fue la médica egipcia Merit Ptah De hecho, hay que mirar precisamente a esta época para encontrar el nombre de la primera mujer científica de la que existen registros: Merit Ptah. Vivió aproximadamente en 2.700 antes de Cristo, en el Antiguo Egipto.", "Más tarde, las mujeres empezaron a destacar también en otras disciplinas, como las matemáticas, la astronomía o la química. En la primera categoría destacó en el siglo VI antes de Cristo la Escuela Pitagórica, a la que podían asistir tanto hombres como mujeres."],
+            subtitle: "Cuándo se pregunta por mujeres científicas",
+            enunciado: "La mitad de la población no puede identificar a ninguna mujer famosa por su contribución al mundo de la ciencia, la UNESCO y la corporacion corporativa recalcan que:",
+            said: "Los estereotipos ocultan una parte importante de la historia científica y perpetúan la desigualdad de género en el acceso a estos campos de estudio y carreras. No podemos permitir privarnos del talento de la mitad de la humanidad: las mujeres hacen avanzar la ciencia y la ciencia hace avanzar al mundo."
+        },
+        {
             title: "Jane Goodall",
             profesion: "Etóloga",
             paragraph: "Goodall es conocida por sus estudios sobre la vida social y familiar de los chimpancés. Empezó a estudiar en la comunidad de chimpancés de Kasakela, en el parque nacional Gombe Stream, Tanzania, en 1960. Sin un trasfondo universitario que influenciara su investigación, Goodall observó cosas que las estrictas doctrinas científicas habrían pasado por alto. En vez de numerar a los chimpancés que observaba, les daba nombres, y notó que tenían personalidades únicas e individuales, una idea nada convencional para su tiempo"
@@ -141,20 +153,49 @@ export default{
     },
     showArticules(){
         const data = this.articles.map((val,id)=>{
-            return((val.table)?this.table(val):this.normal(val));
+            if(val.table)
+            {
+                return this.table(val)
+            } else if(val.profesion) {
+                return this.normal(val)
+            } else if(val.date){
+                return this.fecha(val)
+            }
         });
         document.querySelector("#contenedorArticulos").insertAdjacentHTML("beforeend", data.join(""));   
     },
+    fecha(val){
+        return`
+        <article class="blog-post">
+                <h3 class="blog-post-title">${val.title}</h3>
+                <p class="blog-post-meta">${val.date.year} by <a href="${val.date.href}" target="_blank">${val.date.by}</a></p>
+                <p>${val.paragraph[0]}</p>
+                <hr>
+                <p>${val.paragraph[1]}</p>
+                <h4>${val.subtitle}</h4>
+                <p>${val.enunciado}</p>
+                <blockquote class="blockquote">
+                    <p>"${val.said}"</p>
+                </blockquote>
+                <p>This is some additional paragraph placeholder content. It has been written to fill the available space and
+                    show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+                    demonstration flowing, so be on the lookout for this exact same string of text.</p>
+        </article>
+        `
+    },
     normal(val){
         return `
+        <article class="blog-post">
             <h3 class="blog-post-title">${val.title}</h3>
             <p class="blog-post-meta">${val.profesion}</p>
             <p>${val.paragraph}</p>
+        </article>
         `
     },
     table(val){
         let fila = val.table.map((tb,id)=>tb);
         return `
+        <article class="blog-post">
             <h3 class="blog-post-title">${val.title}</h3>
             <table class="table">
                 <thead>
@@ -163,7 +204,6 @@ export default{
                     </tr>
                 </thead>
                 <tbody>
-                    
                         ${val.table.map((val,id)=> `
                         <tr>
                             <td>${val.year}</td> 
@@ -174,8 +214,10 @@ export default{
                         ).join("")}
                 </tbody>
             </table>
+        <article>
         `
     },
+    lista(val){},
     showBotones(){
         document.querySelector("#contenedorArticulos").insertAdjacentHTML("beforeend", `
             <nav class="blog-pagination" aria-label="Pagination">

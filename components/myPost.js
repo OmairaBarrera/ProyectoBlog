@@ -67,7 +67,7 @@ export default{
                         <strong class="d-inline-block mb-2 text-primary">${val.article}</strong>
                         <h3 class="mb-0">${val.title}</h3>
                         <div class="mb-1 text-muted">${val.date}</div>
-                        <p class="card-text mb-auto">${val.parragrah}</p>
+                        <p class="card-text mb-auto">${val.parragrah.substr(0,88)}...</p>
                         <a href="${val.btn.href}" target="_blank" class="stretched-link">${val.btn.name}</a>
                     </div>
                     <!--Imagen Card-->
