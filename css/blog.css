@@ -116,6 +116,7 @@ h1, h2, h3, h4, h5, h6 {
  /* My CSS*/
 
  .imgStyle{
+  background-image: url(../img/imagenBanner.jpg);
   background-size: cover;
   background-position: center;
  }

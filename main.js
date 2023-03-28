@@ -8,8 +8,9 @@ import myArticles from "./components/myArticles.js";
 myHeader.listWomes(); */
 myHeader.fragShow();
 //Metodos de myBanner
-myBanner.showImage();
-myBanner.showContenido();
+/* myBanner.showImage();
+myBanner.showContenido(); */
+myBanner.fragShowB();
 //Metodos de myPost
 /* myPost.showPost(); */
 myPost.fragShowPost();
