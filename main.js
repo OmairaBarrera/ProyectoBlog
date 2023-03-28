@@ -11,7 +11,8 @@ myHeader.fragShow();
 myBanner.showImage();
 myBanner.showContenido();
 //Metodos de myPost
-myPost.showPost();
+/* myPost.showPost(); */
+myPost.fragShowPost();
 //Metodos de myAside
 myAside.showAside();
 //Metodos de myArticles
