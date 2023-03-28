@@ -4,8 +4,9 @@ import myPost from "./components/myPost.js";
 import myAside from "./components/myAside.js";
 import myArticles from "./components/myArticles.js";
 //Metodos de myHeader
-myHeader.listTitle();
-myHeader.listWomes();
+/* myHeader.listTitle();
+myHeader.listWomes(); */
+myHeader.fragShow();
 //Metodos de myBanner
 myBanner.showImage();
 myBanner.showContenido();

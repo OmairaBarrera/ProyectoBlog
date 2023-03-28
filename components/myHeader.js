@@ -34,17 +34,17 @@ export default{
         },
     ],
 
-    listTitle(){
-        document.querySelector("#title").insertAdjacentHTML("beforeend", `
-            <a class="blog-header-logo text-dark" href="${this.title.href}">${this.title.name}</a>
-        `);
-    },
-
-    listWomes(){
-        let plantilla = "";
-        this.womes.forEach((val,id) => {
-            plantilla += `<a class="p-2 link-secondary" href="${val.href}" target="_blank">${val.name}</a>`
+    fragShow(){
+        const ws = new Worker("storage/wsMyHeader.js", {type:"module"});
+        let count = 0;
+        ws.postMessage({module:"listTitle", data: this.title});
+        ws.postMessage({module:"listWomes", data: this.womes});
+        let id = ["#title", "#womes"]
+        ws.addEventListener("message", (e)=>{
+            let doc = new DOMParser().parseFromString(e.data, "text/html");
+            document.querySelector(id[count]).append(...doc.body.children);
+            (id.length-1==count) ? ws.terminate(): undefined;
+            count++;
         });
-        document.querySelector("#womes").insertAdjacentHTML("beforeend", plantilla);
     }
 }
