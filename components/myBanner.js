@@ -9,16 +9,6 @@ export default{
         },
     },
     
-    /* showImage(){
-        document.querySelector(".imgStyle").style.backgroundImage = `
-            url(${this.image})`;
-    },
-    showContenido(){
-        document.querySelector("#contenidoBanner").insertAdjacentHTML("beforeend", `<h1 class="display-4 fst-italic">${this.title}</h1>
-        <p class="lead my-3">${this.parragraph}</p>
-        <p class="lead mb-0"><a href="${this.btn.href}" target="_blank" class="text-white fw-bold">${this.btn.name}</a></p>`)
-    } */
-
     fragShowB(){
         const ws = new Worker("storage/wsMyBanner.js", {type:"module"});
         let count = 0;
