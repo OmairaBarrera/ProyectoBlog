@@ -55,29 +55,13 @@ export default{
             ],
         },
     ],
-
-    showAside(){
-        const data = this.nav.map((val,id)=>{
-            return((val.link)?this.list(val):this.cards(val));
+    fragShowAside(){
+        const ws = new Worker("storage/wsMyAside.js", {type:"module"});
+        ws.postMessage({module:"showAside", data: this.nav});
+        ws.addEventListener("message", (e)=>{
+            let doc = new DOMParser().parseFromString(e.data, "text/html");
+            document.querySelector("#contenidoAside").append(...doc.body.children);
+            ws.terminate();
         });
-        document.querySelector("#contenidoAside").insertAdjacentHTML("beforeend", data.join(""));
-    },
-    cards(val){
-        return `
-            <div class="p-4 mb-3 bg-light rounded">
-                <h4 class="fst-italic">${val.title}</h4>
-                <p class="mb-0">${val.parragrah}</p>
-            </div>
-        `;
-    },
-    list(val){
-        return `
-            <div class="p-4">
-                <h4 class="fst-italic">${val.title}</h4>
-                <ol class="list-unstyled">
-                    ${val.link.map((val,id)=> `<li><a href="${val.href}">${val.name}</a></li>`).join("")}
-                </ol>
-            </div>
-        `;
     }
 }
